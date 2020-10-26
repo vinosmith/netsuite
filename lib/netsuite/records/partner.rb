@@ -16,7 +16,7 @@ module NetSuite
              :partner_code, :is_person, :company_name, :eligible_for_commission, :entity_id, :last_modified_date,
              :date_created, :title, :mobile_phone, :comments, :middle_name, :send_email, :password, :password2
 
-      field :category_list, CategoryList
+      field :category_list, NetSuite::Records::CategoryList
 
       record_refs :klass, :access_role, :department, :subsidiary
 
