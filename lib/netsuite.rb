@@ -308,6 +308,10 @@ module NetSuite
     autoload :WorkOrder,                        'netsuite/records/work_order'
     autoload :WorkOrderItem,                    'netsuite/records/work_order_item'
     autoload :WorkOrderItemList,                'netsuite/records/work_order_item_list'
+
+    autoload :AdHocTransaction,                 'netsuite/records/ad_hoc_transaction'
+    autoload :AdHocItem,                        'netsuite/records/ad_hoc_item'
+    autoload :AdHocCustomerPayment,             'netsuite/records/ad_hoc_customer_payment'
   end
 
   module Passports
