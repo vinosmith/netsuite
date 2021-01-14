@@ -312,6 +312,8 @@ module NetSuite
     autoload :AdHocTransaction,                 'netsuite/records/ad_hoc_transaction'
     autoload :AdHocItem,                        'netsuite/records/ad_hoc_item'
     autoload :AdHocCustomerPayment,             'netsuite/records/ad_hoc_customer_payment'
+    autoload :TransactionPartner,               'netsuite/records/transaction_partner'
+    autoload :TransactionPartnersList,          'netsuite/records/transaction_partners_list'
   end
 
   module Passports
