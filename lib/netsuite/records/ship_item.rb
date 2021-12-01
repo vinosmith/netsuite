@@ -1,18 +1,18 @@
 module NetSuite
   module Records
-
-    class TransactionPartner
-      include Support::Records
+    class ShipItem
       include Support::Fields
-      include Support::Actions
       include Support::RecordRefs
-      include Namespaces::PlatformCommon
+      include Support::Records
+      include Support::Actions
+      include Namespaces::ListAcct
 
-      fields :name, :isPrimary, :contribution
-      record_refs :klass, :partner_role, :partner
+      actions :get, :get_list, :search
 
-      attr_reader   :internal_id
-      attr_accessor :external_id
+      fields :description, :displayname, :itemid
+
+      attr_reader :internal_id
+      attr_accessor :external_id, :search_joins
 
       def initialize(attributes = {})
         @internal_id = attributes.delete(:internal_id) || attributes.delete(:@internal_id)
@@ -20,7 +20,9 @@ module NetSuite
         initialize_from_attributes_hash(attributes)
       end
 
+      def self.search_class_name
+        "Item"
+      end
     end
-
   end
 end
