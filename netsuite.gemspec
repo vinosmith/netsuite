@@ -15,8 +15,10 @@ Gem::Specification.new do |gem|
   gem.name          = 'netsuite'
   gem.require_paths = ['lib']
   gem.version       = NetSuite::VERSION
+  gem.metadata['changelog_uri'] = 'https://github.com/netsweet/netsuite/blob/master/HISTORY.md'
 
-  gem.add_dependency 'savon', '>= 2.3.0', '<= 2.11.1'
+  gem.add_dependency 'savon', '>= 2.3.0'
 
-  gem.add_development_dependency 'rspec', '~> 3.8.0'
+  gem.add_development_dependency 'rspec', '~> 3.10.0'
+  gem.add_development_dependency 'rake'
 end

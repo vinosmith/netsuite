@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe NetSuite::Support::Fields do
-  let(:klass) { Class.new.send(:include, NetSuite::Support::Fields) }
+  DummyRecord = Class.new.send(:include, NetSuite::Support::Fields)
+  let(:klass) { DummyRecord }
   let(:instance) { klass.new }
+
+  before { klass.fields.clear }
 
   describe '.fields' do
     context 'with arguments' do
@@ -29,6 +32,12 @@ describe NetSuite::Support::Fields do
       instance.one = 1
       expect(instance.one).to eql(1)
     end
+
+    it 'errors when already a field' do
+      klass.field :one
+
+      expect { klass.field :one }.to raise_error('one already defined on DummyRecord')
+    end
   end
 
   describe '.read_only_fields' do
@@ -54,6 +63,32 @@ describe NetSuite::Support::Fields do
     it 'defines instance accessor methods for the given field' do
       expect(klass).to receive(:field).with(:one)
       klass.read_only_field(:one)
+    end
+  end
+
+  describe '.search_only_fields' do
+    context 'with arguments' do
+      it 'calls .search_only_field with each argument passed to it' do
+        [:one, :two, :three].each do |field|
+          expect(klass).to receive(:search_only_field).with(field)
+        end
+        klass.search_only_fields(:one, :two, :three)
+      end
+    end
+
+    context 'without arguments' do
+      it 'returns a Set of the search_only_field arguments' do
+        arguments = [:one, :two, :three]
+        klass.search_only_fields(*arguments)
+        expect(klass.search_only_fields).to eql(Set.new(arguments))
+      end
+    end
+  end
+
+  describe '.search_only_field' do
+    it 'defines instance accessor methods for the given field' do
+      expect(klass).to receive(:field).with(:one)
+      klass.search_only_field(:one)
     end
   end
 
