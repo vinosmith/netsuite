@@ -19,6 +19,7 @@ module NetSuite
              :salutation, :send_email, :sub_partner_login, :tax_id_num, :title, :url, :vat_reg_number
 
       field :category_list, NetSuite::Records::CategoryList
+      field :custom_field_list, CustomFieldList
 
       record_refs :access_role, :klass, :custom_form, :default_tax_reg, :department, :image, :location, :parent, :subsidiary
 
@@ -35,3 +36,4 @@ module NetSuite
 
   end
 end
+
