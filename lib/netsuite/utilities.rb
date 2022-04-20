@@ -140,7 +140,7 @@ module NetSuite
           raise
         end
 
-        # log.warn("concurrent request failure", sleep: count, attempt: count)
+	puts "backoff #{e.message} concurrent request failure, sleep:#{count}, attempts:#{count}, token:#{options[:token]}"
         sleep(count)
 
         retry
