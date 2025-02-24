@@ -321,6 +321,7 @@ module NetSuite
     autoload :TransactionPartnersList,          'netsuite/records/transaction_partners_list'
     autoload :ShipItem,                         'netsuite/records/ship_item'
     autoload :OtherChargeResaleItem,            'netsuite/records/other_charge_resale_item'
+    autoload :MarkupItem,            'netsuite/records/markup_item'
   end
 
   module Passports
